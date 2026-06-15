@@ -190,15 +190,15 @@
 
   /* ── Frosted glass hero box ── */
   .hero-glass {
-    background: oklch(0.06 0.04 265 / 75%);
-    backdrop-filter: blur(20px) saturate(1.5);
-    -webkit-backdrop-filter: blur(20px) saturate(1.5);
-    border: 1px solid oklch(1 0 0 / 10%);
+    background: oklch(0.06 0.04 265 / 42%);
+    backdrop-filter: blur(12px) saturate(1.8);
+    -webkit-backdrop-filter: blur(12px) saturate(1.8);
+    border: 1px solid oklch(1 0 0 / 14%);
     border-radius: 1.25rem;
     box-shadow:
-      0 8px 40px oklch(0 0 0 / 50%),
-      inset 0 1px 0 oklch(1 0 0 / 8%),
-      0 0 0 1px oklch(0.48 0.26 292 / 20%);
+      0 8px 40px oklch(0 0 0 / 35%),
+      inset 0 1px 0 oklch(1 0 0 / 10%),
+      0 0 0 1px oklch(0.48 0.26 292 / 25%);
   }
 
   /* ── Text glows ── */
