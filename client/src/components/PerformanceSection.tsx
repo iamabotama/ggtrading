@@ -1,12 +1,14 @@
 /* GG Trading Performance Section
-   Design: Dark panel with animated green/crimson bar chart + stats
-   Copy: Futures & Options track record on NQ, ES, CL, GC */
+   Design: Dark panel with animated candlestick background, bar chart + stats
+   Candlestick animation lives HERE — gives it room to breathe and tells the
+   "rising trend" story in context. Red = loss bars only. */
 
 import { useEffect, useRef, useState } from "react";
 import {
   BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip,
   ResponsiveContainer, Cell,
 } from "recharts";
+import CandlestickAnimation from "./CandlestickAnimation";
 
 const monthlyData = [
   { month: "Jan", gain: 18.4 },
@@ -54,22 +56,28 @@ export default function PerformanceSection() {
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => { if (entry.isIntersecting) setVisible(true); },
-      { threshold: 0.2 }
+      { threshold: 0.15 }
     );
     if (ref.current) observer.observe(ref.current);
     return () => observer.disconnect();
   }, []);
 
   return (
-    <section id="performance" className="py-24 relative bg-[oklch(0.09_0.03_265)]">
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[oklch(0.55_0.24_22)/40%] to-transparent" />
+    <section id="performance" className="py-24 relative bg-[oklch(0.09_0.03_265)] overflow-hidden">
+      {/* Top rule */}
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[oklch(0.48_0.26_292)/40%] to-transparent" />
+
+      {/* Candlestick animation — full section background, low opacity so it's atmospheric not distracting */}
+      <div className="absolute inset-0" style={{ opacity: 0.18 }}>
+        <CandlestickAnimation />
+      </div>
 
       <div className="container relative z-10" ref={ref}>
         <div className="grid lg:grid-cols-2 gap-12 items-start">
 
           {/* Left: Chart */}
           <div>
-            <span className="text-xs font-mono tracking-widest uppercase text-[oklch(0.65_0.26_22)] mb-3 block">
+            <span className="text-xs font-mono tracking-widest uppercase text-[oklch(0.62_0.22_292)] mb-3 block">
               Track Record
             </span>
             <h2
@@ -152,17 +160,17 @@ export default function PerformanceSection() {
             </p>
 
             {/* Instruments panel */}
-            <div className="gg-panel-crimson p-5 mt-2">
+            <div className="gg-panel-green p-5 mt-2">
               <div className="text-sm font-bold text-white mb-3" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
                 Instruments We Trade
               </div>
               <div className="grid grid-cols-2 gap-2">
                 {[
-                  { sym: "NQ", name: "Nasdaq-100 Futures",   color: "text-[oklch(0.68_0.19_162)]" },
-                  { sym: "ES", name: "S&P 500 Futures",      color: "text-[oklch(0.68_0.19_162)]" },
-                  { sym: "CL", name: "Crude Oil Futures",    color: "text-[oklch(0.78_0.17_80)]" },
-                  { sym: "GC", name: "Gold Futures",         color: "text-[oklch(0.78_0.17_80)]" },
-                  { sym: "SI", name: "Silver Futures",       color: "text-[oklch(0.78_0.17_80)]" },
+                  { sym: "NQ",   name: "Nasdaq-100 Futures",      color: "text-[oklch(0.68_0.19_162)]" },
+                  { sym: "ES",   name: "S&P 500 Futures",         color: "text-[oklch(0.68_0.19_162)]" },
+                  { sym: "CL",   name: "Crude Oil Futures",       color: "text-[oklch(0.78_0.17_80)]" },
+                  { sym: "GC",   name: "Gold Futures",            color: "text-[oklch(0.78_0.17_80)]" },
+                  { sym: "SI",   name: "Silver Futures",          color: "text-[oklch(0.78_0.17_80)]" },
                   { sym: "0DTE", name: "Options (0DTE/Weeklies)", color: "text-[oklch(0.62_0.22_292)]" },
                 ].map((item) => (
                   <div key={item.sym} className="flex items-center gap-2">

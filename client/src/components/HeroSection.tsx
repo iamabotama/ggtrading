@@ -8,7 +8,6 @@
 import { Button } from "@/components/ui/button";
 import { TrendingUp, Zap, BarChart2 } from "lucide-react";
 import { toast } from "sonner";
-import CandlestickAnimation from "./CandlestickAnimation";
 
 const HERO_IMAGE =
   "https://d2xsxph8kpxj0f.cloudfront.net/310519663273809872/A28evjrqCmFMdqNrmCPLoV/gg_hero_v4_futures-UUjGayJ2PEphukbKQjfrut.webp";
@@ -29,9 +28,6 @@ export default function HeroSection() {
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{ backgroundImage: `url(${HERO_IMAGE})` }}
       />
-
-      {/* ── Animated candlestick overlay — sits above image, below text ── */}
-      <CandlestickAnimation />
 
       {/* Thin bottom fade to blend into next section */}
       <div
