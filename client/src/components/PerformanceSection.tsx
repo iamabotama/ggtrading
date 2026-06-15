@@ -1,7 +1,8 @@
 /* GG Trading Performance Section
    Design: Dark panel with animated candlestick background, bar chart + stats
    Candlestick animation lives HERE — gives it room to breathe and tells the
-   "rising trend" story in context. Red = loss bars only. */
+   "rising trend" story in context. Red = loss bars only.
+   Mobile: stacked layout, condensed stats grid */
 
 import { useEffect, useRef, useState } from "react";
 import {
@@ -56,24 +57,24 @@ export default function PerformanceSection() {
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => { if (entry.isIntersecting) setVisible(true); },
-      { threshold: 0.15 }
+      { threshold: 0.10 }
     );
     if (ref.current) observer.observe(ref.current);
     return () => observer.disconnect();
   }, []);
 
   return (
-    <section id="performance" className="py-24 relative bg-[oklch(0.09_0.03_265)] overflow-hidden">
+    <section id="performance" className="py-16 sm:py-24 relative bg-[oklch(0.09_0.03_265)] overflow-hidden">
       {/* Top rule */}
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[oklch(0.48_0.26_292)/40%] to-transparent" />
 
-      {/* Candlestick animation — full section background, low opacity so it's atmospheric not distracting */}
+      {/* Candlestick animation — atmospheric background */}
       <div className="absolute inset-0" style={{ opacity: 0.18 }}>
         <CandlestickAnimation />
       </div>
 
       <div className="container relative z-10" ref={ref}>
-        <div className="grid lg:grid-cols-2 gap-12 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 items-start">
 
           {/* Left: Chart */}
           <div>
@@ -81,14 +82,14 @@ export default function PerformanceSection() {
               Track Record
             </span>
             <h2
-              className="text-4xl lg:text-5xl font-bold text-white leading-tight mb-4"
+              className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-tight mb-4"
               style={{ fontFamily: "'Space Grotesk', sans-serif" }}
             >
               Proven
               <br />
               <span className="gradient-text-green-blue">Green Gains</span>
             </h2>
-            <p className="text-white/60 text-base leading-relaxed mb-8">
+            <p className="text-white/60 text-sm sm:text-base leading-relaxed mb-6 sm:mb-8">
               Trading NQ, ES, CL, and GC futures with AI-identified patterns, our signals
               delivered a total annual return of{" "}
               <span className="text-[oklch(0.68_0.19_162)] font-semibold">+349.6%</span> for
@@ -96,12 +97,12 @@ export default function PerformanceSection() {
             </p>
 
             {/* Bar Chart */}
-            <div className="gg-panel p-5">
-              <div className="flex items-center justify-between mb-4">
-                <span className="text-sm font-semibold text-white/80" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+            <div className="gg-panel p-4 sm:p-5">
+              <div className="flex items-center justify-between mb-4 gap-2">
+                <span className="text-xs sm:text-sm font-semibold text-white/80" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
                   Monthly Performance 2024
                 </span>
-                <div className="flex items-center gap-3 text-xs font-mono">
+                <div className="flex items-center gap-2 sm:gap-3 text-xs font-mono flex-shrink-0">
                   <span className="flex items-center gap-1">
                     <span className="w-2 h-2 rounded-sm bg-[oklch(0.68_0.19_162)]" /> Gains
                   </span>
@@ -111,18 +112,19 @@ export default function PerformanceSection() {
                 </div>
               </div>
               {visible && (
-                <ResponsiveContainer width="100%" height={220}>
+                <ResponsiveContainer width="100%" height={200}>
                   <BarChart data={monthlyData} barCategoryGap="20%">
                     <CartesianGrid strokeDasharray="3 3" stroke="oklch(1 0 0 / 6%)" vertical={false} />
                     <XAxis
                       dataKey="month"
-                      tick={{ fill: "oklch(0.58 0.04 265)", fontSize: 11, fontFamily: "JetBrains Mono" }}
+                      tick={{ fill: "oklch(0.58 0.04 265)", fontSize: 10, fontFamily: "JetBrains Mono" }}
                       axisLine={false} tickLine={false}
                     />
                     <YAxis
-                      tick={{ fill: "oklch(0.58 0.04 265)", fontSize: 11, fontFamily: "JetBrains Mono" }}
+                      tick={{ fill: "oklch(0.58 0.04 265)", fontSize: 10, fontFamily: "JetBrains Mono" }}
                       axisLine={false} tickLine={false}
                       tickFormatter={(v) => `${v}%`}
+                      width={38}
                     />
                     <Tooltip content={<CustomTooltip />} cursor={{ fill: "oklch(1 0 0 / 4%)" }} />
                     <Bar dataKey="gain" radius={[3, 3, 0, 0]}>
@@ -142,10 +144,10 @@ export default function PerformanceSection() {
 
           {/* Right: Stats Grid */}
           <div className="flex flex-col gap-4">
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-2 gap-3 sm:gap-4">
               {performanceStats.map((stat) => (
-                <div key={stat.label} className="gg-panel p-5">
-                  <div className={`text-3xl font-bold font-mono mb-1 ${stat.color}`}>
+                <div key={stat.label} className="gg-panel p-4 sm:p-5">
+                  <div className={`text-2xl sm:text-3xl font-bold font-mono mb-1 ${stat.color}`}>
                     {stat.value}
                   </div>
                   <div className="text-xs text-white/50">{stat.label}</div>
@@ -153,14 +155,14 @@ export default function PerformanceSection() {
               ))}
             </div>
 
-            <p className="text-xs text-white/30 leading-relaxed mt-2">
+            <p className="text-xs text-white/30 leading-relaxed mt-1">
               * Past performance is not indicative of future results. Futures and options trading
               involves substantial risk of loss. Results shown are illustrative of member outcomes
               following GG Trading signals.
             </p>
 
             {/* Instruments panel */}
-            <div className="gg-panel-green p-5 mt-2">
+            <div className="gg-panel-green p-4 sm:p-5 mt-1">
               <div className="text-sm font-bold text-white mb-3" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
                 Instruments We Trade
               </div>
@@ -174,7 +176,7 @@ export default function PerformanceSection() {
                   { sym: "0DTE", name: "Options (0DTE/Weeklies)", color: "text-[oklch(0.62_0.22_292)]" },
                 ].map((item) => (
                   <div key={item.sym} className="flex items-center gap-2">
-                    <span className={`font-mono text-sm font-bold ${item.color}`}>{item.sym}</span>
+                    <span className={`font-mono text-xs sm:text-sm font-bold ${item.color}`}>{item.sym}</span>
                     <span className="text-xs text-white/45">{item.name}</span>
                   </div>
                 ))}

@@ -1,6 +1,7 @@
 /* GG Trading Footer
    Design: Violet primary CTA, blue/green accents, red ONLY in risk disclaimer
-   Copy: Futures & Options focused */
+   Copy: Futures & Options focused
+   Mobile: stacked CTA banner, 2-col link grid on mobile, 5-col on desktop */
 
 import GGLogo from "./GGLogo";
 import { Mail } from "lucide-react";
@@ -44,13 +45,14 @@ const footerLinks = {
 export default function Footer() {
   return (
     <footer className="bg-[oklch(0.06_0.03_265)] border-t border-white/8">
+
       {/* CTA Banner */}
       <div className="border-b border-white/8">
-        <div className="container py-12">
-          <div className="flex flex-col lg:flex-row items-center justify-between gap-6">
-            <div>
+        <div className="container py-10 sm:py-12">
+          <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6">
+            <div className="max-w-lg">
               <h3
-                className="text-2xl lg:text-3xl font-bold text-white mb-2"
+                className="text-xl sm:text-2xl lg:text-3xl font-bold text-white mb-2"
                 style={{ fontFamily: "'Space Grotesk', sans-serif" }}
               >
                 Ready to trade{" "}
@@ -61,15 +63,15 @@ export default function Footer() {
                 Join 12,400+ traders already capturing green gains with GG Trading's intelligence.
               </p>
             </div>
-            <div className="flex gap-3 flex-shrink-0">
+            <div className="flex flex-col sm:flex-row gap-3 w-full lg:w-auto flex-shrink-0">
               <button
-                className="px-6 py-3 rounded-lg bg-[oklch(0.48_0.26_292)] hover:bg-[oklch(0.55_0.26_292)] text-white font-bold text-sm cta-pulse transition-all duration-150 active:scale-[0.97]"
+                className="px-6 py-3 rounded-lg bg-[oklch(0.48_0.26_292)] hover:bg-[oklch(0.55_0.26_292)] text-white font-bold text-sm cta-pulse transition-all duration-150 active:scale-[0.97] w-full sm:w-auto"
                 onClick={() => toast.success("Membership signup coming soon!")}
               >
                 Join Now
               </button>
               <button
-                className="px-6 py-3 rounded-lg border border-white/15 bg-white/5 hover:bg-white/10 text-white/80 font-semibold text-sm transition-all duration-150 active:scale-[0.97]"
+                className="px-6 py-3 rounded-lg border border-white/15 bg-white/5 hover:bg-white/10 text-white/80 font-semibold text-sm transition-all duration-150 active:scale-[0.97] w-full sm:w-auto"
                 onClick={() => toast.info("Contact page coming soon!")}
               >
                 Contact Us
@@ -79,9 +81,11 @@ export default function Footer() {
         </div>
       </div>
 
-      {/* Main Footer */}
-      <div className="container py-12">
-        <div className="grid grid-cols-1 lg:grid-cols-5 gap-10">
+      {/* Main Footer Grid */}
+      <div className="container py-10 sm:py-12">
+        <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 lg:gap-10">
+
+          {/* Brand column */}
           <div className="lg:col-span-1">
             <a href="#" className="flex items-center gap-3 mb-4">
               <GGLogo size={36} />
@@ -94,17 +98,17 @@ export default function Footer() {
                 </span>
               </div>
             </a>
-            <p className="text-xs text-white/40 leading-relaxed mb-5">
+            <p className="text-xs text-white/40 leading-relaxed mb-4">
               AI-powered Futures &amp; Options intelligence for serious index and commodities traders.
             </p>
             <a
               href="mailto:contact@ggtrading.io"
-              className="flex items-center gap-2 text-xs text-white/50 hover:text-[oklch(0.68_0.19_162)] transition-colors group"
+              className="flex items-center gap-2 text-xs text-white/50 hover:text-[oklch(0.68_0.19_162)] transition-colors group mb-5"
             >
               <Mail size={13} className="group-hover:text-[oklch(0.68_0.19_162)]" />
               contact@ggtrading.io
             </a>
-            <div className="flex items-center gap-3 mt-5">
+            <div className="flex items-center gap-2.5">
               {socials.map((social) => (
                 <button
                   key={social.name}
@@ -119,35 +123,38 @@ export default function Footer() {
             </div>
           </div>
 
-          {Object.entries(footerLinks).map(([category, links]) => (
-            <div key={category}>
-              <h4
-                className="text-xs font-bold tracking-widest uppercase text-white/40 mb-4"
-                style={{ fontFamily: "'Space Grotesk', sans-serif" }}
-              >
-                {category}
-              </h4>
-              <ul className="flex flex-col gap-2.5">
-                {links.map((link) => (
-                  <li key={link}>
-                    <button
-                      className="text-sm text-white/50 hover:text-white/80 transition-colors text-left"
-                      onClick={() => toast.info(`${link} page coming soon!`)}
-                    >
-                      {link}
-                    </button>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
+          {/* Link columns — 2-col on mobile, 4-col on lg */}
+          <div className="lg:col-span-4 grid grid-cols-2 sm:grid-cols-4 gap-6 sm:gap-8">
+            {Object.entries(footerLinks).map(([category, links]) => (
+              <div key={category}>
+                <h4
+                  className="text-xs font-bold tracking-widest uppercase text-white/40 mb-3 sm:mb-4"
+                  style={{ fontFamily: "'Space Grotesk', sans-serif" }}
+                >
+                  {category}
+                </h4>
+                <ul className="flex flex-col gap-2 sm:gap-2.5">
+                  {links.map((link) => (
+                    <li key={link}>
+                      <button
+                        className="text-xs sm:text-sm text-white/50 hover:text-white/80 transition-colors text-left"
+                        onClick={() => toast.info(`${link} page coming soon!`)}
+                      >
+                        {link}
+                      </button>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
 
       {/* Bottom bar */}
       <div className="border-t border-white/5">
-        <div className="container py-5 flex flex-col sm:flex-row items-center justify-between gap-3">
-          <p className="text-xs text-white/25">
+        <div className="container py-4 sm:py-5 flex flex-col sm:flex-row items-center justify-between gap-3">
+          <p className="text-xs text-white/25 text-center sm:text-left">
             © 2025 GG Trading — Green Gains Trading. Founded by Brandon Iwata. All rights reserved.
           </p>
           <p className="text-xs text-white/20 text-center sm:text-right max-w-md">
