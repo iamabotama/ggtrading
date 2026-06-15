@@ -1,17 +1,11 @@
 /* GG Trading Performance Section
-   Design: Dark panel with animated green/red bar chart + stats
-   Uses recharts for the performance bar chart */
+   Design: Dark panel with animated green/crimson bar chart + stats
+   Copy: Futures & Options track record on NQ, ES, CL, GC */
 
 import { useEffect, useRef, useState } from "react";
 import {
-  BarChart,
-  Bar,
-  XAxis,
-  YAxis,
-  CartesianGrid,
-  Tooltip,
-  ResponsiveContainer,
-  Cell,
+  BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip,
+  ResponsiveContainer, Cell,
 } from "recharts";
 
 const monthlyData = [
@@ -29,16 +23,13 @@ const monthlyData = [
   { month: "Dec", gain: 61.4 },
 ];
 
-const GREEN = "oklch(0.68 0.19 162)";
-const RED = "oklch(0.60 0.22 27)";
-
 const CustomTooltip = ({ active, payload, label }: any) => {
   if (active && payload && payload.length) {
     const val = payload[0].value;
     return (
       <div className="gg-panel px-3 py-2 text-xs font-mono">
         <div className="text-white/60 mb-1">{label} 2024</div>
-        <div className={val >= 0 ? "text-[oklch(0.68_0.19_162)]" : "text-[oklch(0.60_0.22_27)]"}>
+        <div className={val >= 0 ? "text-[oklch(0.68_0.19_162)]" : "text-[oklch(0.65_0.26_22)]"}>
           {val >= 0 ? "+" : ""}{val}%
         </div>
       </div>
@@ -48,12 +39,12 @@ const CustomTooltip = ({ active, payload, label }: any) => {
 };
 
 const performanceStats = [
-  { label: "Total Annual Return", value: "+349.6%", color: "text-[oklch(0.68_0.19_162)]" },
-  { label: "Best Month", value: "+61.4%", color: "text-[oklch(0.68_0.19_162)]" },
-  { label: "Worst Month", value: "-8.1%", color: "text-[oklch(0.60_0.22_27)]" },
-  { label: "Profitable Months", value: "10/12", color: "text-[oklch(0.62_0.22_292)]" },
-  { label: "Sharpe Ratio", value: "3.42", color: "text-[oklch(0.60_0.22_258)]" },
-  { label: "Max Drawdown", value: "-12.3%", color: "text-[oklch(0.60_0.22_27)]" },
+  { label: "Total Annual Return",  value: "+349.6%", color: "text-[oklch(0.68_0.19_162)]" },
+  { label: "Best Month",           value: "+61.4%",  color: "text-[oklch(0.68_0.19_162)]" },
+  { label: "Worst Month",          value: "-8.1%",   color: "text-[oklch(0.65_0.26_22)]" },
+  { label: "Profitable Months",    value: "10/12",   color: "text-[oklch(0.62_0.22_292)]" },
+  { label: "Sharpe Ratio",         value: "3.42",    color: "text-[oklch(0.60_0.22_258)]" },
+  { label: "Max Drawdown",         value: "-12.3%",  color: "text-[oklch(0.65_0.26_22)]" },
 ];
 
 export default function PerformanceSection() {
@@ -71,14 +62,14 @@ export default function PerformanceSection() {
 
   return (
     <section id="performance" className="py-24 relative bg-[oklch(0.09_0.03_265)]">
-      {/* Top edge */}
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[oklch(0.48_0.26_292)/40%] to-transparent" />
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[oklch(0.55_0.24_22)/40%] to-transparent" />
 
       <div className="container relative z-10" ref={ref}>
         <div className="grid lg:grid-cols-2 gap-12 items-start">
+
           {/* Left: Chart */}
           <div>
-            <span className="text-xs font-mono tracking-widest uppercase text-[oklch(0.68_0.19_162)] mb-3 block">
+            <span className="text-xs font-mono tracking-widest uppercase text-[oklch(0.65_0.26_22)] mb-3 block">
               Track Record
             </span>
             <h2
@@ -90,9 +81,10 @@ export default function PerformanceSection() {
               <span className="gradient-text-green-blue">Green Gains</span>
             </h2>
             <p className="text-white/60 text-base leading-relaxed mb-8">
-              Our AI signals delivered consistent monthly gains throughout 2024, with a
-              total annual return of <span className="text-[oklch(0.68_0.19_162)] font-semibold">+349.6%</span> for
-              active members who followed the system.
+              Trading NQ, ES, CL, and GC futures with AI-identified patterns, our signals
+              delivered a total annual return of{" "}
+              <span className="text-[oklch(0.68_0.19_162)] font-semibold">+349.6%</span> for
+              active members following the system in 2024.
             </p>
 
             {/* Bar Chart */}
@@ -106,7 +98,7 @@ export default function PerformanceSection() {
                     <span className="w-2 h-2 rounded-sm bg-[oklch(0.68_0.19_162)]" /> Gains
                   </span>
                   <span className="flex items-center gap-1">
-                    <span className="w-2 h-2 rounded-sm bg-[oklch(0.60_0.22_27)]" /> Loss
+                    <span className="w-2 h-2 rounded-sm bg-[oklch(0.65_0.26_22)]" /> Loss
                   </span>
                 </div>
               </div>
@@ -117,13 +109,11 @@ export default function PerformanceSection() {
                     <XAxis
                       dataKey="month"
                       tick={{ fill: "oklch(0.58 0.04 265)", fontSize: 11, fontFamily: "JetBrains Mono" }}
-                      axisLine={false}
-                      tickLine={false}
+                      axisLine={false} tickLine={false}
                     />
                     <YAxis
                       tick={{ fill: "oklch(0.58 0.04 265)", fontSize: 11, fontFamily: "JetBrains Mono" }}
-                      axisLine={false}
-                      tickLine={false}
+                      axisLine={false} tickLine={false}
                       tickFormatter={(v) => `${v}%`}
                     />
                     <Tooltip content={<CustomTooltip />} cursor={{ fill: "oklch(1 0 0 / 4%)" }} />
@@ -131,7 +121,7 @@ export default function PerformanceSection() {
                       {monthlyData.map((entry, index) => (
                         <Cell
                           key={index}
-                          fill={entry.gain >= 0 ? "#10b981" : "#ef4444"}
+                          fill={entry.gain >= 0 ? "#10b981" : "#dc2626"}
                           opacity={0.9}
                         />
                       ))}
@@ -155,41 +145,37 @@ export default function PerformanceSection() {
               ))}
             </div>
 
-            {/* Disclaimer */}
             <p className="text-xs text-white/30 leading-relaxed mt-2">
-              * Past performance is not indicative of future results. Trading involves
-              substantial risk of loss. Results shown are for illustrative purposes only.
+              * Past performance is not indicative of future results. Futures and options trading
+              involves substantial risk of loss. Results shown are illustrative of member outcomes
+              following GG Trading signals.
             </p>
 
-            {/* CTA */}
-            <div className="gg-panel-green p-5 mt-2">
-              <div className="flex items-start gap-3">
-                <span className="text-2xl">📈</span>
-                <div>
-                  <div className="text-sm font-bold text-white mb-1" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
-                    Ready to capture your green gains?
+            {/* Instruments panel */}
+            <div className="gg-panel-crimson p-5 mt-2">
+              <div className="text-sm font-bold text-white mb-3" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+                Instruments We Trade
+              </div>
+              <div className="grid grid-cols-2 gap-2">
+                {[
+                  { sym: "NQ", name: "Nasdaq-100 Futures",   color: "text-[oklch(0.68_0.19_162)]" },
+                  { sym: "ES", name: "S&P 500 Futures",      color: "text-[oklch(0.68_0.19_162)]" },
+                  { sym: "CL", name: "Crude Oil Futures",    color: "text-[oklch(0.78_0.17_80)]" },
+                  { sym: "GC", name: "Gold Futures",         color: "text-[oklch(0.78_0.17_80)]" },
+                  { sym: "SI", name: "Silver Futures",       color: "text-[oklch(0.78_0.17_80)]" },
+                  { sym: "0DTE", name: "Options (0DTE/Weeklies)", color: "text-[oklch(0.62_0.22_292)]" },
+                ].map((item) => (
+                  <div key={item.sym} className="flex items-center gap-2">
+                    <span className={`font-mono text-sm font-bold ${item.color}`}>{item.sym}</span>
+                    <span className="text-xs text-white/45">{item.name}</span>
                   </div>
-                  <p className="text-xs text-white/55 mb-3">
-                    Join our community and get access to AI signals, live trading sessions, and
-                    the full performance dashboard.
-                  </p>
-                  <button
-                    className="text-xs font-semibold text-[oklch(0.68_0.19_162)] hover:text-[oklch(0.78_0.19_162)] transition-colors underline underline-offset-2"
-                    onClick={() => {
-                      const el = document.getElementById("pricing");
-                      el?.scrollIntoView({ behavior: "smooth" });
-                    }}
-                  >
-                    View Membership Plans →
-                  </button>
-                </div>
+                ))}
               </div>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Bottom edge */}
       <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[oklch(0.50_0.22_258)/40%] to-transparent" />
     </section>
   );

@@ -1,6 +1,6 @@
 /* GG Trading Navbar
-   Design: Transparent → dark blur on scroll, violet primary CTA
-   Ticker strip below nav with live simulated prices */
+   Design: Transparent → dark blur on scroll, crimson primary CTA
+   Ticker strip: index futures and commodities */
 
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
@@ -9,29 +9,29 @@ import GGLogo from "./GGLogo";
 import { toast } from "sonner";
 
 const tickerData = [
-  { symbol: "BTC/USD", price: "67,842.21", change: "+8.21%", up: true },
-  { symbol: "ETH/USD", price: "2,675.76", change: "+12.58%", up: true },
-  { symbol: "SOL/USD", price: "165.35", change: "+9.32%", up: true },
-  { symbol: "BNB/USD", price: "595.45", change: "+6.18%", up: true },
-  { symbol: "MATIC/USD", price: "0.8457", change: "-2.31%", up: false },
-  { symbol: "AVAX/USD", price: "38.92", change: "+4.77%", up: true },
-  { symbol: "LINK/USD", price: "18.43", change: "+7.15%", up: true },
-  { symbol: "ARB/USD", price: "1.2340", change: "-1.08%", up: false },
-  { symbol: "SPY", price: "528.14", change: "+1.34%", up: true },
-  { symbol: "QQQ", price: "447.82", change: "+2.11%", up: true },
-  { symbol: "NVDA", price: "875.39", change: "+5.62%", up: true },
-  { symbol: "TSLA", price: "248.50", change: "-0.87%", up: false },
+  { symbol: "NQ",    price: "21,452.50", change: "+1.36%",  up: true },
+  { symbol: "ES",    price: "5,892.75",  change: "+1.22%",  up: true },
+  { symbol: "YM",    price: "39,512.00", change: "+0.91%",  up: true },
+  { symbol: "RTY",   price: "2,087.45",  change: "+1.08%",  up: true },
+  { symbol: "CL",    price: "78.62",     change: "+1.75%",  up: true },
+  { symbol: "GC",    price: "2,384.60",  change: "+1.03%",  up: true },
+  { symbol: "SI",    price: "28.945",    change: "+1.71%",  up: true },
+  { symbol: "NG",    price: "2.341",     change: "-0.85%",  up: false },
+  { symbol: "ZW",    price: "548.25",    change: "-1.12%",  up: false },
+  { symbol: "BTC",   price: "67,842.21", change: "+8.21%",  up: true },
+  { symbol: "ETH",   price: "2,675.76",  change: "+12.58%", up: true },
+  { symbol: "VIX",   price: "15.82",     change: "-3.67%",  up: false },
 ];
 
 const navLinks = [
-  { label: "Features", href: "#features" },
+  { label: "Features",    href: "#features" },
   { label: "Performance", href: "#performance" },
-  { label: "Community", href: "#community" },
-  { label: "Pricing", href: "#pricing" },
+  { label: "Community",   href: "#community" },
+  { label: "Pricing",     href: "#pricing" },
 ];
 
 export default function Navbar() {
-  const [scrolled, setScrolled] = useState(false);
+  const [scrolled, setScrolled]     = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
 
   useEffect(() => {
@@ -42,15 +42,15 @@ export default function Navbar() {
 
   return (
     <>
-      {/* Ticker Strip */}
-      <div className="w-full overflow-hidden bg-[oklch(0.10_0.04_265)] border-b border-white/5 py-1.5">
+      {/* ── Ticker Strip ── */}
+      <div className="w-full overflow-hidden bg-[oklch(0.09_0.04_265)] border-b border-white/5 py-1.5">
         <div className="flex">
           <div className="ticker-track flex gap-8 whitespace-nowrap">
             {[...tickerData, ...tickerData].map((item, i) => (
               <span key={i} className="flex items-center gap-2 text-xs font-mono">
-                <span className="text-white/50">{item.symbol}</span>
+                <span className="text-white/45">{item.symbol}</span>
                 <span className="text-white/80">{item.price}</span>
-                <span className={item.up ? "text-[oklch(0.68_0.19_162)]" : "text-[oklch(0.60_0.22_27)]"}>
+                <span className={item.up ? "text-[oklch(0.68_0.19_162)]" : "text-[oklch(0.65_0.26_22)]"}>
                   {item.change}
                 </span>
               </span>
@@ -59,7 +59,7 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* Main Nav */}
+      {/* ── Main Nav ── */}
       <header
         className={`sticky top-0 z-50 w-full transition-all duration-300 ${
           scrolled
@@ -105,14 +105,14 @@ export default function Navbar() {
             </Button>
             <Button
               size="sm"
-              className="cta-pulse bg-[oklch(0.48_0.26_292)] hover:bg-[oklch(0.55_0.26_292)] text-white font-semibold px-5 transition-all duration-150 active:scale-[0.97]"
+              className="cta-pulse bg-[oklch(0.55_0.24_22)] hover:bg-[oklch(0.62_0.24_22)] text-white font-semibold px-5 transition-all duration-150 active:scale-[0.97]"
               onClick={() => toast.success("Membership signup coming soon! Stay tuned.")}
             >
               Join Now
             </Button>
           </div>
 
-          {/* Mobile Menu Toggle */}
+          {/* Mobile Toggle */}
           <button
             className="md:hidden text-white/70 hover:text-white p-2"
             onClick={() => setMobileOpen(!mobileOpen)}
@@ -136,11 +136,8 @@ export default function Navbar() {
               </a>
             ))}
             <Button
-              className="mt-2 bg-[oklch(0.48_0.26_292)] hover:bg-[oklch(0.55_0.26_292)] text-white font-semibold"
-              onClick={() => {
-                setMobileOpen(false);
-                toast.success("Membership signup coming soon!");
-              }}
+              className="mt-2 bg-[oklch(0.55_0.24_22)] hover:bg-[oklch(0.62_0.24_22)] text-white font-semibold"
+              onClick={() => { setMobileOpen(false); toast.success("Membership signup coming soon!"); }}
             >
               Join Now
             </Button>
