@@ -7,6 +7,7 @@ import HeroSection from "@/components/HeroSection";
 import FeaturesSection from "@/components/FeaturesSection";
 import PerformanceSection from "@/components/PerformanceSection";
 import CommunitySection from "@/components/CommunitySection";
+import LeadershipSection from "@/components/LeadershipSection";
 import PricingSection from "@/components/PricingSection";
 import Footer from "@/components/Footer";
 
@@ -18,6 +19,7 @@ export default function Home() {
         <HeroSection />
         <FeaturesSection />
         <PerformanceSection />
+        <LeadershipSection />
         <CommunitySection />
         <PricingSection />
       </main>

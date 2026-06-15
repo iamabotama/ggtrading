@@ -159,7 +159,7 @@ export default function Footer() {
       <div className="border-t border-white/5">
         <div className="container py-5 flex flex-col sm:flex-row items-center justify-between gap-3">
           <p className="text-xs text-white/25">
-            © 2025 GG Trading — Green Gains Trading. All rights reserved.
+            © 2025 GG Trading — Green Gains Trading. Founded by Brandon Iwata. All rights reserved.
           </p>
           <p className="text-xs text-white/20 text-center sm:text-right max-w-md">
             Trading involves substantial risk of loss and is not suitable for all investors.
