@@ -1,6 +1,6 @@
 /* GG Trading Footer
-   Design: Dark footer with logo, nav links, social icons, contact email
-   Crimson/green accent colors, futures-focused copy */
+   Design: Violet primary CTA, blue/green accents, red ONLY in risk disclaimer
+   Copy: Futures & Options focused */
 
 import GGLogo from "./GGLogo";
 import { Mail } from "lucide-react";
@@ -54,7 +54,7 @@ export default function Footer() {
                 style={{ fontFamily: "'Space Grotesk', sans-serif" }}
               >
                 Ready to trade{" "}
-                <span className="gradient-text-crimson-gold">NQ &amp; ES Futures</span>{" "}
+                <span className="gradient-text-violet-green">NQ &amp; ES Futures</span>{" "}
                 with an AI edge?
               </h3>
               <p className="text-white/50 text-sm">
@@ -63,7 +63,7 @@ export default function Footer() {
             </div>
             <div className="flex gap-3 flex-shrink-0">
               <button
-                className="px-6 py-3 rounded-lg bg-[oklch(0.55_0.24_22)] hover:bg-[oklch(0.62_0.24_22)] text-white font-bold text-sm cta-pulse transition-all duration-150 active:scale-[0.97]"
+                className="px-6 py-3 rounded-lg bg-[oklch(0.48_0.26_292)] hover:bg-[oklch(0.55_0.26_292)] text-white font-bold text-sm cta-pulse transition-all duration-150 active:scale-[0.97]"
                 onClick={() => toast.success("Membership signup coming soon!")}
               >
                 Join Now
@@ -82,7 +82,6 @@ export default function Footer() {
       {/* Main Footer */}
       <div className="container py-12">
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-10">
-          {/* Brand column */}
           <div className="lg:col-span-1">
             <a href="#" className="flex items-center gap-3 mb-4">
               <GGLogo size={36} />
@@ -98,7 +97,6 @@ export default function Footer() {
             <p className="text-xs text-white/40 leading-relaxed mb-5">
               AI-powered Futures &amp; Options intelligence for serious index and commodities traders.
             </p>
-
             <a
               href="mailto:contact@ggtrading.io"
               className="flex items-center gap-2 text-xs text-white/50 hover:text-[oklch(0.68_0.19_162)] transition-colors group"
@@ -106,7 +104,6 @@ export default function Footer() {
               <Mail size={13} className="group-hover:text-[oklch(0.68_0.19_162)]" />
               contact@ggtrading.io
             </a>
-
             <div className="flex items-center gap-3 mt-5">
               {socials.map((social) => (
                 <button
@@ -122,7 +119,6 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Link columns */}
           {Object.entries(footerLinks).map(([category, links]) => (
             <div key={category}>
               <h4

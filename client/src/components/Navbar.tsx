@@ -1,6 +1,7 @@
 /* GG Trading Navbar
-   Design: Transparent → dark blur on scroll, crimson primary CTA
-   Ticker strip: index futures and commodities */
+   Design: Single ticker strip (no duplication bug), violet primary CTA
+   Ticker: index futures + commodities only, no crypto
+   The ticker works by rendering items ONCE and using CSS to loop them seamlessly */
 
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
@@ -8,19 +9,19 @@ import { Menu, X } from "lucide-react";
 import GGLogo from "./GGLogo";
 import { toast } from "sonner";
 
-const tickerData = [
-  { symbol: "NQ",    price: "21,452.50", change: "+1.36%",  up: true },
-  { symbol: "ES",    price: "5,892.75",  change: "+1.22%",  up: true },
-  { symbol: "YM",    price: "39,512.00", change: "+0.91%",  up: true },
-  { symbol: "RTY",   price: "2,087.45",  change: "+1.08%",  up: true },
-  { symbol: "CL",    price: "78.62",     change: "+1.75%",  up: true },
-  { symbol: "GC",    price: "2,384.60",  change: "+1.03%",  up: true },
-  { symbol: "SI",    price: "28.945",    change: "+1.71%",  up: true },
-  { symbol: "NG",    price: "2.341",     change: "-0.85%",  up: false },
-  { symbol: "ZW",    price: "548.25",    change: "-1.12%",  up: false },
-  { symbol: "BTC",   price: "67,842.21", change: "+8.21%",  up: true },
-  { symbol: "ETH",   price: "2,675.76",  change: "+12.58%", up: true },
-  { symbol: "VIX",   price: "15.82",     change: "-3.67%",  up: false },
+const tickerItems = [
+  { symbol: "NQ",   name: "Nasdaq-100", price: "21,452.50", change: "+1.36%",  up: true  },
+  { symbol: "ES",   name: "S&P 500",    price: "5,892.75",  change: "+1.22%",  up: true  },
+  { symbol: "YM",   name: "Dow Jones",  price: "39,512.00", change: "+0.91%",  up: true  },
+  { symbol: "RTY",  name: "Russell 2K", price: "2,087.45",  change: "+1.08%",  up: true  },
+  { symbol: "CL",   name: "Crude Oil",  price: "78.62",     change: "+1.75%",  up: true  },
+  { symbol: "GC",   name: "Gold",       price: "2,384.60",  change: "+1.03%",  up: true  },
+  { symbol: "SI",   name: "Silver",     price: "28.945",    change: "+1.71%",  up: true  },
+  { symbol: "NG",   name: "Nat. Gas",   price: "2.341",     change: "-0.85%",  up: false },
+  { symbol: "ZW",   name: "Wheat",      price: "548.25",    change: "-1.12%",  up: false },
+  { symbol: "VIX",  name: "Volatility", price: "15.82",     change: "-3.67%",  up: false },
+  { symbol: "TNX",  name: "10Y Yield",  price: "4.312",     change: "+0.04%",  up: true  },
+  { symbol: "DXY",  name: "US Dollar",  price: "104.23",    change: "+0.18%",  up: true  },
 ];
 
 const navLinks = [
@@ -36,26 +37,43 @@ export default function Navbar() {
 
   useEffect(() => {
     const handler = () => setScrolled(window.scrollY > 40);
-    window.addEventListener("scroll", handler);
+    window.addEventListener("scroll", handler, { passive: true });
     return () => window.removeEventListener("scroll", handler);
   }, []);
 
   return (
     <>
-      {/* ── Ticker Strip ── */}
-      <div className="w-full overflow-hidden bg-[oklch(0.09_0.04_265)] border-b border-white/5 py-1.5">
-        <div className="flex">
-          <div className="ticker-track flex gap-8 whitespace-nowrap">
-            {[...tickerData, ...tickerData].map((item, i) => (
-              <span key={i} className="flex items-center gap-2 text-xs font-mono">
-                <span className="text-white/45">{item.symbol}</span>
-                <span className="text-white/80">{item.price}</span>
-                <span className={item.up ? "text-[oklch(0.68_0.19_162)]" : "text-[oklch(0.65_0.26_22)]"}>
-                  {item.change}
-                </span>
+      {/* ── Single Ticker Strip ──
+          We render the items twice inside ONE .ticker-track div.
+          The CSS animation moves the track left by exactly 50% (= one copy width),
+          then loops — creating a seamless infinite scroll with NO overlap. */}
+      <div
+        className="w-full overflow-hidden bg-[oklch(0.08_0.04_265)] border-b border-white/5 py-1.5 select-none"
+        aria-hidden="true"
+      >
+        <div className="ticker-track whitespace-nowrap">
+          {/* First copy */}
+          {tickerItems.map((item, i) => (
+            <span key={`a-${i}`} className="inline-flex items-center gap-1.5 text-xs font-mono mr-8">
+              <span className="text-[oklch(0.62_0.22_292)] font-bold">{item.symbol}</span>
+              <span className="text-white/40 text-[10px]">{item.name}</span>
+              <span className="text-white/75">{item.price}</span>
+              <span className={item.up ? "text-[oklch(0.68_0.19_162)]" : "text-[oklch(0.60_0.24_22)]"}>
+                {item.change}
               </span>
-            ))}
-          </div>
+            </span>
+          ))}
+          {/* Second copy — seamless loop */}
+          {tickerItems.map((item, i) => (
+            <span key={`b-${i}`} className="inline-flex items-center gap-1.5 text-xs font-mono mr-8">
+              <span className="text-[oklch(0.62_0.22_292)] font-bold">{item.symbol}</span>
+              <span className="text-white/40 text-[10px]">{item.name}</span>
+              <span className="text-white/75">{item.price}</span>
+              <span className={item.up ? "text-[oklch(0.68_0.19_162)]" : "text-[oklch(0.60_0.24_22)]"}>
+                {item.change}
+              </span>
+            </span>
+          ))}
         </div>
       </div>
 
@@ -72,10 +90,7 @@ export default function Navbar() {
           <a href="#" className="flex items-center gap-3 group">
             <GGLogo size={38} />
             <div className="flex flex-col leading-none">
-              <span
-                className="text-lg font-bold tracking-tight text-white"
-                style={{ fontFamily: "'Space Grotesk', sans-serif" }}
-              >
+              <span className="text-lg font-bold tracking-tight text-white" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
                 GG Trading
               </span>
               <span className="text-[10px] tracking-widest text-[oklch(0.68_0.19_162)] uppercase font-mono">
@@ -84,7 +99,7 @@ export default function Navbar() {
             </div>
           </a>
 
-          {/* Desktop Nav Links */}
+          {/* Desktop Nav */}
           <nav className="hidden md:flex items-center gap-7">
             {navLinks.map((link) => (
               <a key={link.label} href={link.href} className="nav-link text-sm font-medium">
@@ -93,7 +108,7 @@ export default function Navbar() {
             ))}
           </nav>
 
-          {/* Desktop CTA */}
+          {/* Desktop CTA — violet primary */}
           <div className="hidden md:flex items-center gap-3">
             <Button
               variant="ghost"
@@ -105,7 +120,7 @@ export default function Navbar() {
             </Button>
             <Button
               size="sm"
-              className="cta-pulse bg-[oklch(0.55_0.24_22)] hover:bg-[oklch(0.62_0.24_22)] text-white font-semibold px-5 transition-all duration-150 active:scale-[0.97]"
+              className="cta-pulse bg-[oklch(0.48_0.26_292)] hover:bg-[oklch(0.55_0.26_292)] text-white font-semibold px-5 transition-all duration-150 active:scale-[0.97]"
               onClick={() => toast.success("Membership signup coming soon! Stay tuned.")}
             >
               Join Now
@@ -136,7 +151,7 @@ export default function Navbar() {
               </a>
             ))}
             <Button
-              className="mt-2 bg-[oklch(0.55_0.24_22)] hover:bg-[oklch(0.62_0.24_22)] text-white font-semibold"
+              className="mt-2 bg-[oklch(0.48_0.26_292)] hover:bg-[oklch(0.55_0.26_292)] text-white font-semibold"
               onClick={() => { setMobileOpen(false); toast.success("Membership signup coming soon!"); }}
             >
               Join Now

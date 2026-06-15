@@ -1,6 +1,6 @@
 /* GG Trading Pricing / Membership Section
-   Design: Three-tier pricing — crimson highlight on Pro plan
-   Copy: Futures & Options focused features */
+   Design: Three-tier — violet highlight on Pro, blue on Elite
+   Red is NOT used on any CTA or plan highlight — only on loss/risk labels */
 
 import { Button } from "@/components/ui/button";
 import { Check, Zap } from "lucide-react";
@@ -21,8 +21,10 @@ const plans = [
     ],
     cta: "Get Started Free",
     highlight: false,
-    borderClass: "gg-panel",
-    ctaStyle: "border-white/20 bg-white/5 hover:bg-white/10 text-white",
+    elite: false,
+    panelStyle: "gg-panel",
+    ctaClass: "border-white/20 bg-white/5 hover:bg-white/10 text-white",
+    checkColor: "text-[oklch(0.68_0.19_162)]",
   },
   {
     name: "Pro",
@@ -42,8 +44,10 @@ const plans = [
     ],
     cta: "Join Pro",
     highlight: true,
-    borderClass: "border-[oklch(0.55_0.24_22)/60%]",
-    ctaStyle: "bg-[oklch(0.55_0.24_22)] hover:bg-[oklch(0.62_0.24_22)] text-white font-bold cta-pulse",
+    elite: false,
+    panelStyle: "",
+    ctaClass: "bg-[oklch(0.48_0.26_292)] hover:bg-[oklch(0.55_0.26_292)] text-white font-bold cta-pulse",
+    checkColor: "text-[oklch(0.62_0.22_292)]",
   },
   {
     name: "Elite",
@@ -62,21 +66,22 @@ const plans = [
     ],
     cta: "Join Elite",
     highlight: false,
-    borderClass: "gg-panel-blue",
-    ctaStyle: "border-[oklch(0.50_0.22_258)/50%] bg-[oklch(0.50_0.22_258)/10%] hover:bg-[oklch(0.50_0.22_258)/20%] text-[oklch(0.80_0.15_258)]",
+    elite: true,
+    panelStyle: "gg-panel-blue",
+    ctaClass: "border-[oklch(0.50_0.22_258)/50%] bg-[oklch(0.50_0.22_258)/10%] hover:bg-[oklch(0.50_0.22_258)/20%] text-[oklch(0.80_0.15_258)]",
+    checkColor: "text-[oklch(0.65_0.18_258)]",
   },
 ];
 
 export default function PricingSection() {
   return (
     <section id="pricing" className="py-24 relative bg-[oklch(0.09_0.03_265)]">
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[oklch(0.55_0.24_22)/40%] to-transparent" />
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[oklch(0.48_0.26_292)/40%] to-transparent" />
       <div className="absolute inset-0 neural-grid opacity-10" />
 
       <div className="container relative z-10">
-        {/* Header */}
         <div className="text-center mb-16 max-w-2xl mx-auto">
-          <span className="text-xs font-mono tracking-widest uppercase text-[oklch(0.65_0.26_22)] mb-3 block">
+          <span className="text-xs font-mono tracking-widest uppercase text-[oklch(0.62_0.22_292)] mb-3 block">
             Membership
           </span>
           <h2
@@ -85,27 +90,26 @@ export default function PricingSection() {
           >
             Choose Your
             <br />
-            <span className="gradient-text-crimson-violet">Trading Edge</span>
+            <span className="gradient-text-violet-blue">Trading Edge</span>
           </h2>
           <p className="text-white/60 text-lg leading-relaxed">
             Transparent pricing. No hidden fees. Cancel anytime.
           </p>
         </div>
 
-        {/* Plans Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
           {plans.map((plan) => (
             <div
               key={plan.name}
               className={`relative flex flex-col rounded-xl p-6 transition-all duration-300 ${
                 plan.highlight
-                  ? "bg-[oklch(0.13_0.05_22)] border-2 border-[oklch(0.55_0.24_22)/60%] shadow-[0_0_40px_oklch(0.55_0.24_22/25%)]"
-                  : plan.borderClass
+                  ? "bg-[oklch(0.13_0.05_292)] border-2 border-[oklch(0.48_0.26_292)/60%] shadow-[0_0_40px_oklch(0.48_0.26_292/20%)]"
+                  : plan.panelStyle
               }`}
             >
               {plan.badge && (
                 <div className="absolute -top-3.5 left-1/2 -translate-x-1/2">
-                  <span className="px-3 py-1 rounded-full text-xs font-bold bg-[oklch(0.55_0.24_22)] text-white font-mono tracking-wide">
+                  <span className="px-3 py-1 rounded-full text-xs font-bold bg-[oklch(0.48_0.26_292)] text-white font-mono tracking-wide">
                     {plan.badge}
                   </span>
                 </div>
@@ -113,19 +117,13 @@ export default function PricingSection() {
 
               <div className="mb-6">
                 <div className="flex items-center gap-2 mb-1">
-                  {plan.highlight && <Zap size={14} className="text-[oklch(0.65_0.26_22)]" />}
-                  <span
-                    className="text-sm font-bold tracking-wider uppercase text-white/70"
-                    style={{ fontFamily: "'Space Grotesk', sans-serif" }}
-                  >
+                  {plan.highlight && <Zap size={14} className="text-[oklch(0.62_0.22_292)]" />}
+                  <span className="text-sm font-bold tracking-wider uppercase text-white/70" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
                     {plan.name}
                   </span>
                 </div>
                 <div className="flex items-baseline gap-1 mt-2">
-                  <span
-                    className="text-4xl font-extrabold text-white"
-                    style={{ fontFamily: "'Space Grotesk', sans-serif" }}
-                  >
+                  <span className="text-4xl font-extrabold text-white" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
                     {plan.price}
                   </span>
                   <span className="text-white/40 text-sm">{plan.period}</span>
@@ -138,23 +136,16 @@ export default function PricingSection() {
               <ul className="flex flex-col gap-2.5 mb-8 flex-1">
                 {plan.features.map((feature) => (
                   <li key={feature} className="flex items-start gap-2.5 text-sm text-white/70">
-                    <Check
-                      size={14}
-                      className={`flex-shrink-0 mt-0.5 ${
-                        plan.highlight ? "text-[oklch(0.65_0.26_22)]" : "text-[oklch(0.68_0.19_162)]"
-                      }`}
-                    />
+                    <Check size={14} className={`flex-shrink-0 mt-0.5 ${plan.checkColor}`} />
                     {feature}
                   </li>
                 ))}
               </ul>
 
               <Button
-                className={`w-full font-semibold transition-all duration-150 active:scale-[0.97] ${plan.ctaStyle}`}
-                variant={plan.highlight ? "default" : "outline"}
-                onClick={() =>
-                  toast.success(`${plan.name} membership signup coming soon!`)
-                }
+                className={`w-full font-semibold transition-all duration-150 active:scale-[0.97] ${plan.ctaClass}`}
+                variant={plan.highlight || plan.elite ? "default" : "outline"}
+                onClick={() => toast.success(`${plan.name} membership signup coming soon!`)}
               >
                 {plan.cta}
               </Button>
