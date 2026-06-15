@@ -1,8 +1,8 @@
 /* GG Trading Hero Section
    Design: v6 fusion hero — Brandon's real MNQ chart style (white MA arc, red ribbons,
    trade boxes) fused with cinematic violet nebula atmosphere. No bull. No crypto.
-   Frosted glass panel left-aligned. Violet primary CTA. Stats bar bottom.
-   Mobile: stacked layout, smaller type, condensed stats.
+   Frosted glass panel left-aligned — 65% opacity, 20px blur, darker background.
+   Copy uses Brandon's authentic teaching voice: FVG, EMA, ORB, micro contracts.
    "See Our Results" scrolls to #performance. */
 
 import { Button } from "@/components/ui/button";
@@ -37,7 +37,7 @@ export default function HeroSection() {
       <div
         className="absolute inset-0"
         style={{
-          background: "linear-gradient(to right, oklch(0.05 0.04 265 / 60%) 0%, oklch(0.05 0.04 265 / 25%) 50%, transparent 75%)",
+          background: "linear-gradient(to right, oklch(0.05 0.04 265 / 55%) 0%, oklch(0.05 0.04 265 / 20%) 50%, transparent 75%)",
           zIndex: 2,
         }}
       />
@@ -50,8 +50,8 @@ export default function HeroSection() {
 
       {/* ── Content ── */}
       <div className="container relative py-16 sm:py-20 lg:py-28" style={{ zIndex: 4 }}>
-        {/* Frosted glass panel */}
-        <div className="hero-glass w-full max-w-[560px] p-6 sm:p-8 lg:p-10">
+        {/* Frosted glass panel — 65% opacity, darker, more frosted */}
+        <div className="hero-glass w-full max-w-[580px] p-6 sm:p-8 lg:p-10">
 
           {/* Live badge */}
           <div className="fade-up fade-up-delay-1 inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-[oklch(0.48_0.26_292)/50%] bg-[oklch(0.48_0.26_292)/15%] mb-4 sm:mb-5">
@@ -71,21 +71,21 @@ export default function HeroSection() {
             <span className="gradient-text-violet-green">Every Session.</span>
           </h1>
 
-          {/* Sub-headline */}
-          <p className="fade-up fade-up-delay-3 text-sm sm:text-base lg:text-lg text-white/80 leading-relaxed mb-5 sm:mb-6">
-            We trade <strong className="text-white">Micro Nasdaq (MNQ)</strong> and{" "}
-            <strong className="text-white">Micro S&amp;P 500 (MES)</strong> futures using
-            high-probability pattern recognition — identifying trend reversals before they happen,
-            with a proven <strong className="text-[oklch(0.68_0.19_162)]">78.4% win rate</strong> and
-            a 2:1 minimum risk/reward on every trade.
+          {/* Sub-headline — Brandon's authentic voice */}
+          <p className="fade-up fade-up-delay-3 text-sm sm:text-base lg:text-lg text-white/85 leading-relaxed mb-5 sm:mb-6">
+            We trade <strong className="text-white">MNQ and MES micro futures</strong> using{" "}
+            <strong className="text-[oklch(0.68_0.19_162)]">Fair Value Gaps</strong>,{" "}
+            <strong className="text-[oklch(0.68_0.19_162)]">EMA crossovers</strong>, and the{" "}
+            <strong className="text-[oklch(0.68_0.19_162)]">6:30 AM Opening Range Breakout</strong> —
+            high-probability setups with a minimum <strong className="text-white">2:1 risk/reward</strong> on every trade.
           </p>
 
           {/* Feature pills */}
           <div className="fade-up fade-up-delay-4 flex flex-wrap gap-2 sm:gap-2.5 mb-6 sm:mb-7">
             {[
-              { icon: <Zap size={12} />,       label: "NQ & ES Futures Signals" },
-              { icon: <TrendingUp size={12} />, label: "Options Flow Analysis" },
-              { icon: <BarChart2 size={12} />,  label: "Gold · Oil · Commodities" },
+              { icon: <Zap size={12} />,       label: "FVG & EMA Signals" },
+              { icon: <TrendingUp size={12} />, label: "Opening Range Breakout" },
+              { icon: <BarChart2 size={12} />,  label: "NQ · ES · Gold · Oil" },
             ].map((pill) => (
               <span
                 key={pill.label}
@@ -118,7 +118,7 @@ export default function HeroSection() {
         </div>
       </div>
 
-      {/* ── Stats bar — hidden on very small screens, shown from sm up ── */}
+      {/* ── Stats bar ── */}
       <div className="absolute bottom-6 sm:bottom-8 left-0 right-0" style={{ zIndex: 4 }}>
         <div className="container">
           <div className="grid grid-cols-2 sm:flex sm:flex-wrap gap-x-6 sm:gap-x-8 gap-y-3 max-w-3xl">

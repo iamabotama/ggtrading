@@ -6,7 +6,7 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
-import GGLogo from "./GGLogo";
+
 import { toast } from "sonner";
 
 const tickerItems = [
@@ -88,7 +88,11 @@ export default function Navbar() {
         <div className="container flex items-center justify-between h-16">
           {/* Logo */}
           <a href="#" className="flex items-center gap-3 group">
-            <GGLogo size={38} />
+            <img
+              src="/manus-storage/gg_trading_logo_e832ab67.png"
+              alt="GG Trading Logo"
+              className="w-10 h-10 object-contain"
+            />
             <div className="flex flex-col leading-none">
               <span className="text-lg font-bold tracking-tight text-white" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
                 GG Trading

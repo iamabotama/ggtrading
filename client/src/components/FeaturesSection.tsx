@@ -9,54 +9,54 @@ import { Brain, BarChart3, Zap, Users, Shield, TrendingUp } from "lucide-react";
 const features = [
   {
     icon: <Brain size={26} />,
-    title: "AI Pattern Recognition",
+    title: "Fair Value Gap Signals",
     description:
-      "Proprietary models scan NQ and ES futures in real time, identifying high-probability trend setups, breakout patterns, and mean-reversion signals before the move begins.",
+      "We run the FVG indicator on 5-minute and 45-minute timeframes — Brandon's primary setup. When price creates a 3-candle imbalance, we flag it before the fill. These gaps are respected with remarkable consistency on NQ and ES every session.",
     panelClass: "gg-panel",
     iconColor: "text-[oklch(0.62_0.22_292)]",
     glowColor: "oklch(0.48 0.26 292 / 20%)",
   },
   {
     icon: <Zap size={26} />,
-    title: "Futures Signal Alerts",
+    title: "EMA Crossover Strategy",
     description:
-      "Instant alerts on Nasdaq (NQ), S&P 500 (ES), Crude Oil (CL), Gold (GC), and Silver (SI) futures — entry, target, and stop levels delivered the moment conditions align.",
+      "Fast/slow EMA pairs give directional bias before the move. When the fast EMA crosses above, we look for longs on MNQ and MES. Simple, repeatable, and delivering a 70%+ baseline win rate on crossover setups — the foundation of every trade plan.",
     panelClass: "gg-panel-blue",
     iconColor: "text-[oklch(0.65_0.18_258)]",
     glowColor: "oklch(0.50 0.22 258 / 20%)",
   },
   {
     icon: <BarChart3 size={26} />,
-    title: "Options Flow Intelligence",
+    title: "6:30 AM Opening Range Breakout",
     description:
-      "AI-curated options flow analysis on major indexes — unusual activity, large block trades, and high-conviction directional bets surfaced in a clean, actionable dashboard.",
+      "Brandon's highest-probability morning setup. Box the 6:30–6:45 AM candle, mark the midline, wait for breakout and retest. This single setup reports an 8–9 out of 10 success rate — and it's the first trade we look for every single session.",
     panelClass: "gg-panel-green",
     iconColor: "text-[oklch(0.68_0.19_162)]",
     glowColor: "oklch(0.68 0.19 162 / 20%)",
   },
   {
     icon: <TrendingUp size={26} />,
-    title: "Index Trend & Pattern Analysis",
+    title: "TradingView Chart Mastery",
     description:
-      "Systematic identification of proven chart patterns — bull flags, wedges, VWAP reclaims, and key level breakouts — applied exclusively to large-cap index futures for maximum liquidity.",
+      "We teach you to set up TradingView the right way — Electronic Trading Hours, hollow candles, clean canvas. The exact chart layout Brandon uses live, with every indicator configured as he runs it on MNQ and MES. Free version is all you need to start.",
     panelClass: "gg-panel",
     iconColor: "text-[oklch(0.62_0.22_292)]",
     glowColor: "oklch(0.48 0.26 292 / 20%)",
   },
   {
     icon: <Users size={26} />,
-    title: "Elite Trading Community",
+    title: "Live Streams & Bar Replay Practice",
     description:
-      "Join 12,400+ serious futures and options traders on Discord, YouTube live streams, and Twitch sessions. Real-time trade commentary, setups shared, and wins celebrated together.",
+      "Watch Brandon trade live on YouTube and Twitch — every entry, stop, and target explained in real time. Use TradingView's Bar Replay mode to practice the same setups risk-free. Paper trade until your edge is proven before going live.",
     panelClass: "gg-panel-blue",
     iconColor: "text-[oklch(0.65_0.18_258)]",
     glowColor: "oklch(0.50 0.22 258 / 20%)",
   },
   {
     icon: <Shield size={26} />,
-    title: "Risk & Position Management",
+    title: "Micro Contracts & 2:1 Risk Rules",
     description:
-      "Automated position sizing for futures contracts, max-loss guardrails, and portfolio heat monitoring — protecting your capital while keeping you positioned for the next green session.",
+      "Start with MNQ ($2/point) and MES instead of full-size contracts. Every trade requires a minimum 2:1 risk/reward — non-negotiable. We use the Position Tool on TradingView to visualize risk before entering. Protecting capital is rule one.",
     panelClass: "gg-panel-green",
     iconColor: "text-[oklch(0.68_0.19_162)]",
     glowColor: "oklch(0.68 0.19 162 / 20%)",

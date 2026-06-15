@@ -190,10 +190,10 @@
 
   /* ── Frosted glass hero box ── */
   .hero-glass {
-    background: oklch(0.06 0.04 265 / 42%);
-    backdrop-filter: blur(12px) saturate(1.8);
-    -webkit-backdrop-filter: blur(12px) saturate(1.8);
-    border: 1px solid oklch(1 0 0 / 14%);
+    background: oklch(0.05 0.05 265 / 65%);
+    backdrop-filter: blur(20px) saturate(1.6);
+    -webkit-backdrop-filter: blur(20px) saturate(1.6);
+    border: 1px solid oklch(1 0 0 / 18%);
     border-radius: 1.25rem;
     box-shadow:
       0 8px 40px oklch(0 0 0 / 35%),

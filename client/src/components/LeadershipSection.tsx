@@ -25,10 +25,15 @@ export default function LeadershipSection() {
               <br />
               <span className="gradient-text-violet-green">For Traders.</span>
             </h2>
+            <p className="text-white/60 text-base sm:text-lg leading-relaxed mb-4">
+              GG Trading was founded on a simple conviction: the same setups that institutions
+              use — Fair Value Gaps, Opening Range Breakouts, EMA structure — are available to
+              every trader willing to learn them correctly.
+            </p>
             <p className="text-white/60 text-base sm:text-lg leading-relaxed">
-              GG Trading was founded on a conviction that serious futures and options traders
-              deserve institutional-grade AI intelligence — without the institutional price tag.
-              Every signal, every session, every tool is built with that mission at its core.
+              Brandon built this community to teach the exact system he trades live every morning:
+              MNQ and MES micro futures, TradingView chart mastery, and a strict 2:1 risk/reward
+              discipline that protects capital while compounding gains session after session.
             </p>
           </div>
 
@@ -70,9 +75,10 @@ export default function LeadershipSection() {
 
               <blockquote className="relative z-10">
                 <p className="text-sm text-white/70 leading-relaxed italic">
-                  "The Nasdaq and S&amp;P 500 futures markets are the most liquid arenas on earth.
-                  With the right AI-driven patterns and disciplined risk management, green gains
-                  aren't luck — they're a repeatable system."
+                  "I trade MNQ and MES every morning using Fair Value Gaps and the 6:30 AM
+                  Opening Range Breakout. Start with micro contracts, keep your risk/reward at
+                  2:1 minimum, and let the setups come to you. Green gains aren't luck —
+                  they're a repeatable system you can learn."
                 </p>
                 <footer className="mt-3 text-xs text-white/35 font-mono">
                   — Brandon Iwata, Founder &amp; CEO

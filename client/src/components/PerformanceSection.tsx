@@ -90,8 +90,9 @@ export default function PerformanceSection() {
               <span className="gradient-text-green-blue">Green Gains</span>
             </h2>
             <p className="text-white/60 text-sm sm:text-base leading-relaxed mb-6 sm:mb-8">
-              Trading NQ, ES, CL, and GC futures with AI-identified patterns, our signals
-              delivered a total annual return of{" "}
+              Trading MNQ and MES micro futures using Fair Value Gaps, EMA crossovers, and
+              the Opening Range Breakout strategy — with a strict 2:1 minimum risk/reward on
+              every trade — our system delivered a total annual return of{" "}
               <span className="text-[oklch(0.68_0.19_162)] font-semibold">+349.6%</span> for
               active members following the system in 2024.
             </p>
@@ -168,12 +169,12 @@ export default function PerformanceSection() {
               </div>
               <div className="grid grid-cols-2 gap-2">
                 {[
-                  { sym: "NQ",   name: "Nasdaq-100 Futures",      color: "text-[oklch(0.68_0.19_162)]" },
-                  { sym: "ES",   name: "S&P 500 Futures",         color: "text-[oklch(0.68_0.19_162)]" },
-                  { sym: "CL",   name: "Crude Oil Futures",       color: "text-[oklch(0.78_0.17_80)]" },
-                  { sym: "GC",   name: "Gold Futures",            color: "text-[oklch(0.78_0.17_80)]" },
-                  { sym: "SI",   name: "Silver Futures",          color: "text-[oklch(0.78_0.17_80)]" },
-                  { sym: "0DTE", name: "Options (0DTE/Weeklies)", color: "text-[oklch(0.62_0.22_292)]" },
+                  { sym: "MNQ",  name: "Micro Nasdaq-100 ($2/pt)",  color: "text-[oklch(0.68_0.19_162)]" },
+                  { sym: "MES",  name: "Micro S&P 500 ($1/pt)",     color: "text-[oklch(0.68_0.19_162)]" },
+                  { sym: "MGC",  name: "Micro Gold Futures",         color: "text-[oklch(0.78_0.17_80)]" },
+                  { sym: "SIL",  name: "Micro Silver Futures",       color: "text-[oklch(0.78_0.17_80)]" },
+                  { sym: "CL",   name: "Crude Oil Futures",          color: "text-[oklch(0.78_0.17_80)]" },
+                  { sym: "0DTE", name: "Options (0DTE/Weeklies)",    color: "text-[oklch(0.62_0.22_292)]" },
                 ].map((item) => (
                   <div key={item.sym} className="flex items-center gap-2">
                     <span className={`font-mono text-xs sm:text-sm font-bold ${item.color}`}>{item.sym}</span>
