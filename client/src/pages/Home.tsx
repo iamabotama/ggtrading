@@ -1,25 +1,27 @@
-import { Button } from "@/components/ui/button";
-import { Loader2 } from "lucide-react";
-import { Streamdown } from 'streamdown';
+/* GG Trading — Home Page
+   Design: Quantum Violet AI Trading Command Center
+   Sections: Navbar → Hero → Features → Performance → Community → Pricing → Footer */
 
-/**
- * All content in this page are only for example, replace with your own feature implementation
- * When building pages, remember your instructions in Frontend Best Practices, Design Guide and Common Pitfalls
- */
+import Navbar from "@/components/Navbar";
+import HeroSection from "@/components/HeroSection";
+import FeaturesSection from "@/components/FeaturesSection";
+import PerformanceSection from "@/components/PerformanceSection";
+import CommunitySection from "@/components/CommunitySection";
+import PricingSection from "@/components/PricingSection";
+import Footer from "@/components/Footer";
+
 export default function Home() {
-  // If theme is switchable in App.tsx, we can implement theme toggling like this:
-  // const { theme, toggleTheme } = useTheme();
-
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen bg-[oklch(0.07_0.03_265)] text-white">
+      <Navbar />
       <main>
-        {/* Example: lucide-react for icons */}
-        <Loader2 className="animate-spin" />
-        Example Page
-        {/* Example: Streamdown for markdown rendering */}
-        <Streamdown>Any **markdown** content</Streamdown>
-        <Button variant="default">Example Button</Button>
+        <HeroSection />
+        <FeaturesSection />
+        <PerformanceSection />
+        <CommunitySection />
+        <PricingSection />
       </main>
+      <Footer />
     </div>
   );
 }
