@@ -6,7 +6,7 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
-
+import { Link } from "wouter";
 import { toast } from "sonner";
 
 const tickerItems = [
@@ -25,10 +25,11 @@ const tickerItems = [
 ];
 
 const navLinks = [
-  { label: "Features",    href: "#features" },
-  { label: "Performance", href: "#performance" },
-  { label: "Community",   href: "#community" },
-  { label: "Pricing",     href: "#pricing" },
+  { label: "Features",    href: "/#features",    external: false },
+  { label: "Performance", href: "/#performance", external: false },
+  { label: "Streams",     href: "/streams",      external: false },
+  { label: "Community",   href: "/#community",   external: false },
+  { label: "Pricing",     href: "/#pricing",     external: false },
 ];
 
 export default function Navbar() {
@@ -106,9 +107,9 @@ export default function Navbar() {
           {/* Desktop Nav */}
           <nav className="hidden md:flex items-center gap-7">
             {navLinks.map((link) => (
-              <a key={link.label} href={link.href} className="nav-link text-sm font-medium">
+              <Link key={link.label} href={link.href} className="nav-link text-sm font-medium">
                 {link.label}
-              </a>
+              </Link>
             ))}
           </nav>
 
@@ -145,14 +146,14 @@ export default function Navbar() {
         {mobileOpen && (
           <div className="md:hidden bg-[oklch(0.10_0.04_265)] border-t border-white/8 px-4 py-4 flex flex-col gap-3">
             {navLinks.map((link) => (
-              <a
+              <Link
                 key={link.label}
                 href={link.href}
                 className="text-sm text-white/70 hover:text-white py-2 border-b border-white/5"
                 onClick={() => setMobileOpen(false)}
               >
                 {link.label}
-              </a>
+              </Link>
             ))}
             <Button
               className="mt-2 bg-[oklch(0.48_0.26_292)] hover:bg-[oklch(0.55_0.26_292)] text-white font-semibold"
