@@ -1,0 +1,64 @@
+name: Build & Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    name: Build Vite app and push to ggtrading.io
+
+    steps:
+      # 1. Checkout source code
+      - name: Checkout source (ggtrading)
+        uses: actions/checkout@v4
+
+      # 2. Set up Node.js
+      - name: Setup Node.js 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      # 3. Install pnpm
+      - name: Install pnpm
+        uses: pnpm/action-setup@v3
+        with:
+          version: 10
+
+      # 4. Install dependencies
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      # 5. Build the Vite app
+      - name: Build
+        run: pnpm run build
+        env:
+          # Vite static build — analytics vars are optional; set them in repo secrets if needed
+          VITE_ANALYTICS_ENDPOINT: ""
+          VITE_ANALYTICS_WEBSITE_ID: ""
+          VITE_APP_ID: "gg-trading"
+          VITE_APP_TITLE: "GG Trading — Green Gains"
+          VITE_FRONTEND_FORGE_API_KEY: ""
+          VITE_FRONTEND_FORGE_API_URL: ""
+          VITE_OAUTH_PORTAL_URL: ""
+
+      # 6. Add a .nojekyll file so GitHub Pages serves the Vite output correctly
+      - name: Add .nojekyll
+        run: touch dist/public/.nojekyll
+
+      # 7. Push built output to iamabotama/ggtrading.io
+      - name: Deploy to ggtrading.io
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          # DEPLOY_TOKEN must be a Personal Access Token (classic) with repo scope
+          # Add it as a secret named DEPLOY_TOKEN in iamabotama/ggtrading Settings → Secrets
+          personal_token: ${{ secrets.DEPLOY_TOKEN }}
+          external_repository: iamabotama/ggtrading.io
+          publish_branch: gh-pages
+          publish_dir: ./dist/public
+          commit_message: "Deploy: ${{ github.sha }} — ${{ github.event.head_commit.message }}"
+          user_name: "github-actions[bot]"
+          user_email: "github-actions[bot]@users.noreply.github.com"
