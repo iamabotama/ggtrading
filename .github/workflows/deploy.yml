@@ -57,7 +57,7 @@ jobs:
           # Add it as a secret named DEPLOY_TOKEN in iamabotama/ggtrading Settings → Secrets
           personal_token: ${{ secrets.DEPLOY_TOKEN }}
           external_repository: iamabotama/ggtrading.io
-          publish_branch: gh-pages
+          publish_branch: main
           publish_dir: ./dist/public
           commit_message: "Deploy: ${{ github.sha }} — ${{ github.event.head_commit.message }}"
           user_name: "github-actions[bot]"
