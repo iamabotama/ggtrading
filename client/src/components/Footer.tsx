@@ -3,7 +3,6 @@
    Copy: Futures & Options focused
    Mobile: stacked CTA banner, 2-col link grid on mobile, 5-col on desktop */
 
-import GGLogo from "./GGLogo";
 import { Mail } from "lucide-react";
 import { toast } from "sonner";
 
@@ -88,7 +87,11 @@ export default function Footer() {
           {/* Brand column */}
           <div className="lg:col-span-1">
             <a href="#" className="flex items-center gap-3 mb-4">
-              <GGLogo size={36} />
+              <img
+                src="/manus-storage/gg_trading_logo_e832ab67.png"
+                alt="GG Trading Logo"
+                className="w-12 h-12 object-contain flex-shrink-0"
+              />
               <div className="flex flex-col leading-none">
                 <span className="text-base font-bold text-white" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
                   GG Trading
