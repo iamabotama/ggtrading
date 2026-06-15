@@ -4,6 +4,7 @@
    The ticker works by rendering items ONCE and using CSS to loop them seamlessly */
 
 import { useState, useEffect } from "react";
+import logoSrc from "@/assets/gg_trading_logo.png";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 import { Link } from "wouter";
@@ -90,7 +91,7 @@ export default function Navbar() {
           {/* Logo */}
           <a href="#" className="flex items-center gap-3 group">
             <img
-              src="/manus-storage/gg_trading_logo_e832ab67.png"
+              src={logoSrc}
               alt="GG Trading Logo"
               className="w-10 h-10 object-contain"
             />

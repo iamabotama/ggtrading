@@ -5,6 +5,7 @@
 
 import { Mail } from "lucide-react";
 import { toast } from "sonner";
+import logoSrc from "@/assets/gg_trading_logo.png";
 
 const XIcon = () => (
   <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
@@ -88,7 +89,7 @@ export default function Footer() {
           <div className="lg:col-span-1">
             <a href="#" className="flex items-center gap-3 mb-4">
               <img
-                src="/manus-storage/gg_trading_logo_e832ab67.png"
+                src={logoSrc}
                 alt="GG Trading Logo"
                 className="w-12 h-12 object-contain flex-shrink-0"
               />
