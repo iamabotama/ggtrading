@@ -190,15 +190,19 @@
 
   /* ── Frosted glass hero box ── */
   .hero-glass {
-    background: oklch(0.05 0.05 265 / 65%);
-    backdrop-filter: blur(20px) saturate(1.6);
-    -webkit-backdrop-filter: blur(20px) saturate(1.6);
-    border: 1px solid oklch(1 0 0 / 18%);
+    /* Solid-enough dark base so text is always readable */
+    background: oklch(0.06 0.06 265 / 82%);
+    /* Strong blur smears the background image into soft color clouds */
+    backdrop-filter: blur(28px) saturate(1.8) brightness(0.75);
+    -webkit-backdrop-filter: blur(28px) saturate(1.8) brightness(0.75);
+    /* Subtle violet-tinted border gives the "glass edge" look */
+    border: 1px solid oklch(0.62 0.22 292 / 30%);
+    border-top: 1px solid oklch(1 0 0 / 22%);
     border-radius: 1.25rem;
     box-shadow:
-      0 8px 40px oklch(0 0 0 / 35%),
-      inset 0 1px 0 oklch(1 0 0 / 10%),
-      0 0 0 1px oklch(0.48 0.26 292 / 25%);
+      0 12px 60px oklch(0 0 0 / 55%),
+      inset 0 1px 0 oklch(1 0 0 / 14%),
+      0 0 0 1px oklch(0.48 0.26 292 / 18%);
   }
 
   /* ── Text glows ── */

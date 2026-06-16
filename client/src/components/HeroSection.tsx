@@ -27,18 +27,30 @@ export default function HeroSection() {
   return (
     <section className="relative w-full min-h-[88vh] sm:min-h-[92vh] flex items-center overflow-hidden">
 
-      {/* ── Background image — full vibrancy ── */}
+      {/* ── Background image — full crisp quality ── */}
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{ backgroundImage: `url(${HERO_IMAGE})` }}
       />
 
-      {/* Subtle left-side vignette — extra contrast for frosted glass text panel */}
+      {/* Dark atmospheric overlay — dims the image without muddying it.
+          Radial vignette darkens edges, left gradient creates contrast zone for text panel */}
       <div
         className="absolute inset-0"
         style={{
-          background: "linear-gradient(to right, oklch(0.05 0.04 265 / 55%) 0%, oklch(0.05 0.04 265 / 20%) 50%, transparent 75%)",
+          background: [
+            /* Overall dark veil — pushes image to background */
+            "linear-gradient(to bottom, oklch(0.04 0.04 265 / 52%) 0%, oklch(0.04 0.04 265 / 38%) 60%, oklch(0.04 0.04 265 / 72%) 100%)",
+          ].join(", "),
           zIndex: 2,
+        }}
+      />
+      {/* Left-side deeper shadow — extra depth behind the text panel */}
+      <div
+        className="absolute inset-0"
+        style={{
+          background: "radial-gradient(ellipse 70% 100% at 0% 50%, oklch(0.04 0.05 265 / 60%) 0%, transparent 70%)",
+          zIndex: 3,
         }}
       />
 
@@ -49,7 +61,7 @@ export default function HeroSection() {
       />
 
       {/* ── Content ── */}
-      <div className="container relative py-16 sm:py-20 lg:py-28" style={{ zIndex: 4 }}>
+      <div className="container relative py-16 sm:py-20 lg:py-28" style={{ zIndex: 5 }}>
         {/* Frosted glass panel — 65% opacity, darker, more frosted */}
         <div className="hero-glass w-full max-w-[580px] p-6 sm:p-8 lg:p-10">
 
@@ -119,7 +131,7 @@ export default function HeroSection() {
       </div>
 
       {/* ── Stats bar ── */}
-      <div className="absolute bottom-6 sm:bottom-8 left-0 right-0" style={{ zIndex: 4 }}>
+      <div className="absolute bottom-6 sm:bottom-8 left-0 right-0" style={{ zIndex: 5 }}>
         <div className="container">
           <div className="grid grid-cols-2 sm:flex sm:flex-wrap gap-x-6 sm:gap-x-8 gap-y-3 max-w-3xl">
             {stats.map((stat) => (
