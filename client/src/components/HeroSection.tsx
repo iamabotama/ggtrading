@@ -97,7 +97,7 @@ export default function HeroSection() {
             {[
               { icon: <Zap size={12} />,       label: "FVG & EMA Signals" },
               { icon: <TrendingUp size={12} />, label: "Opening Range Breakout" },
-              { icon: <BarChart2 size={12} />,  label: "NQ · ES · Gold · Oil" },
+              { icon: <BarChart2 size={12} />,  label: "NQ · ES · Gold" },
             ].map((pill) => (
               <span
                 key={pill.label}
