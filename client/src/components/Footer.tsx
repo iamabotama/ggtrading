@@ -32,7 +32,7 @@ const socials = [
   { name: "Instagram", icon: <InstagramIcon />, color: "#E1306C", href: "https://www.instagram.com/ggstradingllc" },
   { name: "Discord",   icon: <DiscordIcon />,   color: "#5865F2", href: "#" },
   { name: "YouTube",   icon: <YoutubeIcon />,   color: "#FF0000", href: "#" },
-  { name: "Kick",      icon: <KickIcon />,      color: "#53FC18", href: "#" },
+  { name: "Kick",      icon: <KickIcon />,      color: "#53FC18", href: "https://kick.com/GGTradingLLC" },
 ];
 
 const footerLinks = {

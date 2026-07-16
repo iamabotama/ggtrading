@@ -338,7 +338,7 @@ export default function Streams() {
                 Subscribe on YouTube
               </a>
               <a
-                href="#KICK_URL_TBD"
+                href="https://kick.com/GGTradingLLC"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 px-6 py-3 rounded-lg text-black font-bold text-sm transition-all duration-150 active:scale-[0.97] w-full sm:w-auto justify-center"

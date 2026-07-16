@@ -62,7 +62,7 @@ const platforms = [
     color: "#53FC18",
     members: "Live every market day",
     cta: "Watch on Kick",
-    href: "#",
+    href: "https://kick.com/GGTradingLLC",
   },
 ];
 
