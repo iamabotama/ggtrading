@@ -35,7 +35,7 @@ const platforms = [
     color: "#5865F2",
     members: "8,200+ members",
     cta: "Join Discord",
-    href: "#",
+    href: "https://discord.gg/npqsGfKNy",
   },
   {
     name: "Instagram",
