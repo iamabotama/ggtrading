@@ -341,11 +341,11 @@ export default function Streams() {
                 href="#KICK_URL_TBD"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 px-6 py-3 rounded-lg text-white font-bold text-sm transition-all duration-150 active:scale-[0.97] w-full sm:w-auto justify-center"
-                style={{ background: "#9146FF" }}
+                className="flex items-center gap-2 px-6 py-3 rounded-lg text-black font-bold text-sm transition-all duration-150 active:scale-[0.97] w-full sm:w-auto justify-center"
+                style={{ background: "#53FC18" }}
               >
                 <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
-                  <path d="M11.571 4.714h1.715v5.143H11.57zm4.715 0H18v5.143h-1.714zM6 0L1.714 4.286v15.428h5.143V24l4.286-4.286h3.428L22.286 12V0zm14.571 11.143l-3.428 3.428h-3.429l-3 3v-3H6.857V1.714h13.714z" />
+                  <path d="M2 2h4v5.333L9.333 4H14L9.333 9.333 14 14H9.333L6 10.667V14H2V2zm10 0h4v4h2V2h4v12h-4v-4h-2v4h-4V2z" />
                 </svg>
                 Follow on Kick
               </a>
