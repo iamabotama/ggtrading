@@ -98,7 +98,7 @@ export default function Footer() {
                   GG Trading
                 </span>
                 <span className="text-[9px] tracking-widest text-[oklch(0.68_0.19_162)] uppercase font-mono">
-                  Growth in Gains
+                  Growth & Gains
                 </span>
               </div>
             </a>
@@ -165,7 +165,7 @@ export default function Footer() {
       <div className="border-t border-white/5">
         <div className="container py-4 sm:py-5 flex flex-col sm:flex-row items-center justify-between gap-3">
           <p className="text-xs text-white/25 text-center sm:text-left">
-            © 2025 GG Trading — Growth in Gains Trading. Founded by Brandon Iwata. All rights reserved.
+            © 2025 GG Trading — Growth & Gains Trading. Founded by Brandon Iwata. All rights reserved.
           </p>
           <p className="text-xs text-white/20 text-center sm:text-right max-w-md">
             Futures and options trading involves substantial risk of loss and is not suitable for all

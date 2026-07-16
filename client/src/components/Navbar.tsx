@@ -100,7 +100,7 @@ export default function Navbar() {
                 GG Trading
               </span>
               <span className="text-[10px] tracking-widest text-[oklch(0.68_0.19_162)] uppercase font-mono">
-                Growth in Gains
+                Growth & Gains
               </span>
             </div>
           </a>
