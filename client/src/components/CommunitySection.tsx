@@ -143,7 +143,13 @@ export default function CommunitySection() {
                     variant="outline"
                     className="border-white/15 bg-white/5 hover:bg-white/10 text-white/80 hover:text-white text-xs font-semibold transition-all duration-150 active:scale-[0.97]"
                     style={{ borderColor: `${platform.color}40` }}
-                    onClick={() => toast.info(`${platform.name} link coming soon!`)}
+                    onClick={() => {
+                      if (platform.href && platform.href !== "#") {
+                        window.open(platform.href, "_blank", "noopener,noreferrer");
+                      } else {
+                        toast.info(`${platform.name} link coming soon!`);
+                      }
+                    }}
                   >
                     {platform.cta} →
                   </Button>

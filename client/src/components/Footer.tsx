@@ -116,7 +116,13 @@ export default function Footer() {
               {socials.map((social) => (
                 <button
                   key={social.name}
-                  onClick={() => toast.info(`${social.name} link coming soon!`)}
+                  onClick={() => {
+                    if (social.href && social.href !== "#") {
+                      window.open(social.href, "_blank", "noopener,noreferrer");
+                    } else {
+                      toast.info(`${social.name} link coming soon!`);
+                    }
+                  }}
                   className="p-2 rounded-lg bg-white/5 hover:bg-white/10 transition-all duration-150 active:scale-[0.95]"
                   style={{ color: social.color }}
                   title={social.name}
