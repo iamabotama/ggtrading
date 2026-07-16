@@ -44,7 +44,7 @@ const platforms = [
     color: "#E1306C",
     members: "Follow for updates",
     cta: "Follow on Instagram",
-    href: "#",
+    href: "https://www.instagram.com/ggstradingllc",
   },
   {
     name: "YouTube",
