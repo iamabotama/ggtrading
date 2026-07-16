@@ -323,7 +323,7 @@ export default function Streams() {
               </span>
             </h3>
             <p className="text-white/45 text-sm sm:text-base max-w-md mx-auto mb-6 leading-relaxed">
-              Brandon streams live NQ &amp; ES Futures trades weekly on YouTube and Twitch.
+              Brandon streams live NQ &amp; ES Futures trades weekly on YouTube and Kick.
               Subscribe to get notified the moment a session goes live.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
@@ -338,7 +338,7 @@ export default function Streams() {
                 Subscribe on YouTube
               </a>
               <a
-                href="https://www.twitch.tv/GGTrading"
+                href="#KICK_URL_TBD"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 px-6 py-3 rounded-lg text-white font-bold text-sm transition-all duration-150 active:scale-[0.97] w-full sm:w-auto justify-center"
@@ -347,7 +347,7 @@ export default function Streams() {
                 <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
                   <path d="M11.571 4.714h1.715v5.143H11.57zm4.715 0H18v5.143h-1.714zM6 0L1.714 4.286v15.428h5.143V24l4.286-4.286h3.428L22.286 12V0zm14.571 11.143l-3.428 3.428h-3.429l-3 3v-3H6.857V1.714h13.714z" />
                 </svg>
-                Follow on Twitch
+                Follow on Kick
               </a>
             </div>
           </div>

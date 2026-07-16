@@ -39,7 +39,7 @@ const plans = [
       "FVG + ORB setup notifications",
       "EMA crossover entry/exit alerts",
       "Private Discord signal channels",
-      "Live Twitch & YouTube sessions",
+      "Live Kick & YouTube sessions",
       "Micro contract sizing guidance",
       "2:1 risk/reward trade plans",
     ],

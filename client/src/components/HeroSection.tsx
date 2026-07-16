@@ -78,7 +78,7 @@ export default function HeroSection() {
             className="fade-up fade-up-delay-2 text-3xl sm:text-4xl lg:text-6xl font-extrabold leading-[1.05] tracking-tight text-white mb-3"
             style={{ fontFamily: "'Space Grotesk', sans-serif" }}
           >
-            Green Gains.
+            Growth in Gains.
             <br />
             <span className="gradient-text-violet-green">Every Session.</span>
           </h1>

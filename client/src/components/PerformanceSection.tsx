@@ -87,7 +87,7 @@ export default function PerformanceSection() {
             >
               Proven
               <br />
-              <span className="gradient-text-green-blue">Green Gains</span>
+              <span className="gradient-text-green-blue">Growth in Gains</span>
             </h2>
             <p className="text-white/60 text-sm sm:text-base leading-relaxed mb-6 sm:mb-8">
               Trading MNQ and MES micro futures using Fair Value Gaps, EMA crossovers, and

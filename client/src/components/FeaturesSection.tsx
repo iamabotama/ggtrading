@@ -47,7 +47,7 @@ const features = [
     icon: <Users size={26} />,
     title: "Live Streams & Bar Replay Practice",
     description:
-      "Watch Brandon trade live on YouTube and Twitch — every entry, stop, and target explained in real time. Use TradingView's Bar Replay mode to practice the same setups risk-free. Paper trade until your edge is proven before going live.",
+      "Watch Brandon trade live on YouTube and Kick — every entry, stop, and target explained in real time. Use TradingView's Bar Replay mode to practice the same setups risk-free. Paper trade until your edge is proven before going live.",
     panelClass: "gg-panel-blue",
     iconColor: "text-[oklch(0.65_0.18_258)]",
     glowColor: "oklch(0.50 0.22 258 / 20%)",

@@ -67,7 +67,7 @@ export default function LeadershipSection() {
                   <p className="text-sm font-mono text-[oklch(0.62_0.22_292)] mt-0.5">
                     Owner &amp; CEO
                   </p>
-                  <p className="text-xs text-white/40 mt-0.5">GG Trading · Green Gains</p>
+                  <p className="text-xs text-white/40 mt-0.5">GG Trading · Growth in Gains</p>
                 </div>
               </div>
 
